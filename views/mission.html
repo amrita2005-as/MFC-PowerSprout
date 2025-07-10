@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>PowerSprout Mission</title>
+  <link rel="stylesheet" href="../public/styles.css"/>
+</head>
+<body class="home-body">
+  <header class="main-header">
+    <a href="/" class="logo-link">
+      <img src="../public/images/logo.png" alt="PowerSprout Logo" class="navbar-logo" />
+    </a>
+    <nav class="nav-links">
+      <a href="./home.html">Home</a>
+      <a href="./home.html#about">About</a>
+      <a href="./vision.html">Vision</a>
+      <a href="./mission.html">Mission</a>
+    </nav>
+    <img src="../public/images/menu.png" alt="Menu Icon" class="menu-icon" id="menuToggle" />
+  </header>
+
+  <!-- Slide-in Menu -->
+  <div class="slide-menu" id="slideMenu">
+    <div class="slide-menu-content">
+      <a href="./home.html">Home</a>
+      <a href="./home.html#about">About</a>
+      <a href="./vision.html">Vision</a>
+      <a href="./mission.html">Mission</a>
+      <a href="./home.html#team">Team</a>
+      <a href="./iot.html">IOT</a>
+    </div>
+  </div>
+
+  <section class="scroll-section">
+    <!-- Solution Overlay -->
+    <div class="overlay-block slide-up">
+      <h1 class="scroll-heading">How is Waste turned into Watts?</h1>
+      <div class="content-row">
+        <div class="content-text">
+          <p>
+            PowerSprout is an IoT-powered, single-chamber Microbial Fuel Cell (MFC) designed for large-scale deployment. By combining electrogenic bacteria and a network of smart sensors, it turns food waste into clean, storable energy.
+          </p>
+          <p>
+            🔁 How it works:
+            <ol>
+              <li>Bacteria decompose food waste in an anaerobic chamber.</li>
+              <li>Electrons released travel through a circuit, generating electricity at the air cathode.</li>
+              <li>Electricity is stored in a supercapacitor for efficient, scalable usage.</li>
+              <li>IoT sensors monitor voltage, gas release, temperature, pH, microbial health & system load in real time.</li>
+            </ol>
+          </p>
+        </div>
+        <div class="content-image">
+          <img src="../public/images/iot.jpg" alt="Our Solution" class="section-image" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Mission Overlay -->
+    <div class="overlay-block slide-up-on-scroll" id="mission-section">
+      <h1 class="scroll-heading">Our Mission</h1>
+      <div class="content-overlay">
+        <div class="content-row">
+          <div class="content-text">
+            <p>
+              To design and deploy smart, scalable Microbial Fuel Cell (MFC) systems that convert food waste into clean energy—across municipal, industrial, and institutional landscapes.
+              <br><br>
+              We’re not just imagining decentralized bioelectricity—we’re making it practical, affordable, and measurable.
+              <br><br>
+              Because with PowerSprout, every spoiled meal, every leftover, every forgotten peel becomes a spark of sustainable power—lighting the path to a greener tomorrow.
+            </p>
+          </div>
+          <div class="content-image">
+            <img src="../public/images/mission_pic.png" alt="Our Mission" class="section-image" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const menuIcon = document.getElementById('menuToggle');
+    const slideMenu = document.getElementById('slideMenu');
+
+    menuIcon.addEventListener('click', () => {
+      slideMenu.classList.toggle('show');
+    });
+
+    slideMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        slideMenu.classList.remove('show');
+      });
+    });
+
+    // Scroll-triggered animation for the Mission section
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.3
+    });
+
+    const missionSection = document.querySelector('#mission-section');
+    if (missionSection) {
+      observer.observe(missionSection);
+    }
+  </script>
+</body>
+</html>
